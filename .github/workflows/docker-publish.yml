@@ -1,0 +1,16 @@
+name: Publish Docker image
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  docker:
+    uses: josa42/actions/.github/workflows/shared-docker-publish.yml@main
+    with:
+      image: josa/grandstream-telephonebook
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
